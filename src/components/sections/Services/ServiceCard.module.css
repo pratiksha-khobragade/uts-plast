@@ -1,0 +1,78 @@
+.card {
+  position: relative;
+  background: var(--color-bg);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  box-shadow: 0 4px 18px rgba(2, 62, 138, 0.06);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(2, 62, 138, 0.16);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 0%,
+    rgba(2, 62, 138, 0.12),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.card:hover .cardGlow {
+  opacity: 1;
+}
+
+.iconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-light);
+  margin-bottom: 1.25rem;
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.card:hover .iconWrap {
+  background: var(--color-primary);
+}
+
+.icon {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  transition: color 0.4s ease;
+}
+
+.card:hover .icon {
+  color: #fff;
+}
+
+.title {
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-secondary);
+  position: relative;
+}

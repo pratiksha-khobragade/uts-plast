@@ -1,0 +1,241 @@
+.whyChooseUs {
+  padding: 6.5rem 2rem;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.heading {
+  text-align: center;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 4.5rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fadeUp {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem 0;
+}
+
+.itemWrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 250px;
+}
+
+.divider {
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-light) 50%,
+    transparent
+  );
+  margin: 0 2rem;
+  flex-shrink: 0;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cardIn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.iconWrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-light);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: floatY 3.5s ease-in-out infinite;
+}
+
+.card:nth-child(1) .iconWrap {
+  animation-delay: 0s;
+}
+
+.itemWrap:nth-of-type(2) .iconWrap {
+  animation-delay: 0.4s;
+}
+
+.itemWrap:nth-of-type(3) .iconWrap {
+  animation-delay: 0.8s;
+}
+
+.itemWrap:nth-of-type(4) .iconWrap {
+  animation-delay: 1.2s;
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.card:hover .iconWrap {
+  transform: scale(1.15) rotate(-6deg);
+  animation-play-state: paused;
+}
+
+.pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.25;
+  animation: pulseGlow 2.4s ease-out infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  border-top-color: var(--color-primary);
+  border-right-color: var(--color-primary);
+  animation: spin 4s linear infinite;
+}
+
+.ringSecondary {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--color-light);
+  animation: spin 9s linear infinite reverse;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon {
+  font-size: 2rem;
+  color: var(--color-primary);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.1);
+}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-top: 0.35rem;
+}
+
+.subLabel {
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  opacity: 0.75;
+  margin-top: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .itemWrap {
+    width: 100%;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .card {
+    width: 100%;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-light);
+  }
+
+  .itemWrap:last-child .card {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .whyChooseUs {
+    padding: 4rem 1.25rem;
+  }
+
+  .iconWrap {
+    width: 80px;
+    height: 80px;
+  }
+
+  .icon {
+    font-size: 1.7rem;
+  }
+
+  .number {
+    font-size: 2.3rem;
+  }
+}

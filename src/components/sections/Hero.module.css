@@ -1,0 +1,341 @@
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bgImage {
+  object-fit: cover;
+  transform: scale(1.15);
+  transition: transform 3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slowPan 24s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.bgZoom {
+  transform: scale(1);
+  animation-play-state: running;
+}
+
+@keyframes slowPan {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.07) translate(-1.5%, -1%);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 20, 45, 0.55) 0%,
+    rgba(2, 20, 45, 0.4) 100%
+  );
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(2, 20, 45, 0.55) 0%,
+    rgba(2, 20, 45, 0.25) 45%,
+    transparent 75%
+  );
+}
+
+/* Animated rope SVGs */
+.ropeSvg {
+  position: absolute;
+  z-index: 0;
+  width: 420px;
+  height: 420px;
+  pointer-events: none;
+}
+
+.ropeTopLeft {
+  top: -40px;
+  left: -60px;
+}
+
+.ropeBottomRight {
+  bottom: -60px;
+  right: -60px;
+  transform: rotate(180deg);
+}
+
+.ropePath {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: drawRope 6s ease-in-out infinite,
+    swayRope 8s ease-in-out infinite;
+}
+
+.ropePathDelay {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: drawRope 6s ease-in-out infinite 0.4s,
+    swayRope 8s ease-in-out infinite 0.4s;
+}
+
+@keyframes drawRope {
+  0% {
+    stroke-dashoffset: 900;
+  }
+  45%,
+  55% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -900;
+  }
+}
+
+@keyframes swayRope {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Content - centered */
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  text-align: center;
+  padding: 2rem 2rem;
+}
+
+.eyebrow,
+.heading,
+.subtext,
+.cta {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fadeIn {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  margin-bottom: 1.75rem;
+  transition-delay: 0s;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4fc3f7;
+  position: relative;
+}
+
+.liveDot::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: #4fc3f7;
+  opacity: 0.5;
+  animation: pulseRing 1.8s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.heading {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition-delay: 0.15s;
+}
+
+.subtext {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  transition-delay: 0.3s;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.9rem 0.9rem 0.9rem 1.75rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition-delay: 0.45s;
+  transition-property: opacity, transform, box-shadow, background;
+  transition-duration: 0.8s, 0.8s, 0.4s, 0.4s;
+}
+
+.cta:hover {
+  background: var(--color-light);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  transform: translateY(-3px) !important;
+}
+
+.ctaShine {
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(2, 62, 138, 0.15),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+
+.cta:hover .ctaShine {
+  left: 130%;
+}
+
+.ctaIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.cta:hover .ctaIconWrap {
+  transform: translateX(4px);
+}
+
+.ctaIcon {
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.8s ease 1s;
+}
+
+.cueIn {
+  opacity: 1;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 34px;
+  background: #fff;
+  opacity: 0.5;
+}
+
+.scrollIcon {
+  color: #fff;
+  font-size: 0.85rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 2rem 1.5rem;
+  }
+
+  .ropeSvg {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    min-height: 88vh;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .ropeSvg {
+    display: none;
+  }
+
+  .scrollCue {
+    display: none;
+  }
+}

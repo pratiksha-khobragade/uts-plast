@@ -1,0 +1,38 @@
+.hero {
+  min-height: 140vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 100px 24px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-light) 160%);
+}
+
+.heroInner {
+  max-width: 720px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--color-light);
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--color-secondary);
+  line-height: 1.6;
+}

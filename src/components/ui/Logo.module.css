@@ -1,0 +1,11 @@
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  height: var(--logo-height, 94px);
+  width: auto;
+  max-width: none;
+}

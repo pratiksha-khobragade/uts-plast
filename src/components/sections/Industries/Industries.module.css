@@ -1,0 +1,285 @@
+.industries {
+  padding: 5rem 2rem 7rem;
+  background: linear-gradient(180deg, var(--color-light) 0%, #eef6fb 100%);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 1rem;
+}
+
+.eyebrow,
+.heading,
+.subtext {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fadeUp {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(2, 62, 138, 0.08);
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+  transition-delay: 0.1s;
+}
+
+.subtext {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-secondary);
+  transition-delay: 0.2s;
+}
+
+/* Desktop fan layout */
+.fanWrap {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  margin-top: 1rem;
+}
+
+.ropeSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.ropeCore {
+  stroke: var(--color-light);
+  stroke-width: 9;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.9;
+  stroke-dasharray: 1300;
+  stroke-dashoffset: 1300;
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ropeTwistA {
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 16 16;
+  stroke-dashoffset: 1300;
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ropeTwistB {
+  stroke: #0a4f8f;
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 16 16;
+  stroke-dashoffset: 1316;
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawIn {
+  stroke-dashoffset: 0 !important;
+}
+
+.fanCard {
+  position: absolute;
+  width: 240px;
+  height: 300px;
+  border-radius: 18px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 16px 36px rgba(2, 62, 138, 0.18);
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.fanCardIn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.fanCard:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 44px rgba(2, 62, 138, 0.26);
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.fanCard:hover .cardImage {
+  transform: scale(1.08);
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 62, 138, 0) 30%,
+    rgba(2, 20, 45, 0.6) 75%,
+    rgba(1, 12, 28, 0.88) 100%
+  );
+}
+
+.cardNumber {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.35);
+  z-index: 1;
+}
+
+.cardIconWrap {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.cardIcon {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.cardText {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.1rem 1.15rem;
+  z-index: 1;
+}
+
+.cardTitle {
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.cardStat {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Mobile fallback */
+.mobileList {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .fanWrap {
+    display: none;
+  }
+
+  .mobileList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .mobileCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(2, 62, 138, 0.14);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobileConnector {
+    position: absolute;
+    left: 50%;
+    top: -24px;
+    width: 3px;
+    height: 24px;
+    background: repeating-linear-gradient(
+      var(--color-primary) 0px,
+      var(--color-primary) 6px,
+      var(--color-light) 6px,
+      var(--color-light) 12px
+    );
+    transform: translateX(-50%);
+  }
+
+  .mobileCard:first-child .mobileConnector {
+    display: none;
+  }
+
+  .mobileImageWrap {
+    position: relative;
+    height: 220px;
+    width: 100%;
+  }
+
+  .mobileText {
+    padding: 1rem 1.15rem;
+    background: var(--color-bg);
+  }
+
+  .mobileText .cardTitle {
+    color: var(--color-primary);
+  }
+
+  .mobileText .cardStat {
+    color: var(--color-secondary);
+  }
+}
+
+@media (max-width: 560px) {
+  .industries {
+    padding: 3.5rem 1.25rem 4rem;
+  }
+
+  .mobileImageWrap {
+    height: 190px;
+  }
+}
