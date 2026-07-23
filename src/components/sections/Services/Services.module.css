@@ -2,13 +2,13 @@
   position: relative;
   overflow: hidden;
   padding: 5rem 2rem;
-  margin: 4rem 2rem;
+  margin: 0rem 2rem;
   border-radius: 32px;
   background: linear-gradient(
     135deg,
     var(--color-light) 0%,
-    #eaf3fb 45%,
-    #f4ecfb 100%
+    #cae5fd 45%,
+    #91b6e3 100%
   );
 }
 
